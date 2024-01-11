@@ -10,18 +10,31 @@ from tkinter import messagebox
 # Main Window
 
 window=customtkinter.CTk ()
-window.title("Figure Out Numbers with Issa!")
-window.geometry("900x500")
-window.configure(bg="#86A7FC")
+window.title("What's At Peak?")
+window.geometry("866x500")
+window.configure(bg="#FFF9C7")
 window.resizable (False, False)
 
+# Background
 
+image = PhotoImage(file="bg.png")
+Label (window, image=image,border =0,bg="#FFF9C7").place(x=0, y=-40)
 
-#Background
-
-background = PhotoImage(file="bg.png")
-background = Label (window,image = image, border=0, bg= "#86A7FC")
-background.place(x= 0, y=50)
 # Fonts 
+
+font1=("Showcard Gothic", 130)
+font2=("Bell MT", 20,'bold')
+font3=("Bell MT", 16,"italic")
+
+# Title
+
+title= Label(window, text="SOLVE WITH AYE!", fg="#3B3486", bg="#FFF9C7",font=font1)
+
+
+
+
+
+# Frame
+
 
 window.mainloop()
