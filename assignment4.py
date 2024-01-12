@@ -1,4 +1,3 @@
-
 # Assignment 4. Finding the largest number among the three numbers entered by the user using only if-else statement.
 
 import customtkinter 
@@ -26,33 +25,28 @@ font5= ("Cooper Black", 40)
 
 # Determine functions to be used. 
 
-    
-
-
-def entry_validation(): 
+def entry_validation (): 
     if any (entry == "" for entry in (first_number_entry.get(), second_number_entry.get(), third_number_entry.get())):
-        messagebox.showerror("Oops!", "Kindly fill out all required fields.")
+        messagebox.showerror ("Hold on!", "To calculate, fill out all required fields.")
         return
     try:
         first_number= float(first_number_entry.get())
         second_number=float(second_number_entry.get())
         third_number=float(third_number_entry.get())
-    
     except ValueError:
-        messagebox.showerror("Oops!", "Please enter numerical values only.")
-        return
-    
-    def calculate_highest_number(first_number, second_number, third_number):
-        if first_number> second_number and first_number > third_number:
-            return first_number
-        elif second_number>= first_number and second_number>= third_number:
-            return second_number
-        else:
+        messagebox.showerror("Oops!", "Sorry, but that can't be! Try again!")
+
+    def calculate_highest_number (first_number, second_number, third_number):
+        if first_number > second_number:
+            if first_number > third_number:
+                return first_number
+        elif second_number > first_number:
+            if second_number > third_number:
+                return second_number
+        else: 
             return third_number
-    
-    highest_number = calculate_highest_number(first_number, second_number, third_number)
-    number_text_label.configure(text="The highest number is:", font=('Helvetica', 15))
-    highest_number_label.configure(text=(highest_number), font=('Helvetica', 30, 'bold'), text_color="#D21404")
+        
+     highest_number = calculate_highest_number(first_number, second_number, third_number)
 
 def try_again():
     first_number_entry.delete(0, END)
@@ -60,16 +54,6 @@ def try_again():
     third_number_entry.delete(0, END)
     number_text_label.configure(text="")
     highest_number_label.configure(text="")
-
-number_text_label = customtkinter.CTkLabel(window, text="")
-number_text_label.place(relx=0.5, rely=0.4, anchor=CENTER)
-
-highest_number_label = customtkinter.CTkLabel(window, text="")
-highest_number_label.place(relx=0.5, rely=0.65, anchor=CENTER)
-
-
-
-    
 
 # Create corresponding buttons for each function.
 
@@ -81,7 +65,6 @@ exit_button.place(x=590, y=350)
 
 try_again_button=customtkinter.CTkButton(window, command= try_again, text="AGAIN", font=font3,fg_color="#FFFFFF", bg_color="#FFFFFF",text_color="#2D3250", border_width=2, border_color="#2D3250", hover_color="#C499F3")
 try_again_button.place(x=135, y=350)
-
 
 # Create window's heading. 
 
@@ -102,20 +85,10 @@ second_number_entry.place(x=340, y=190)
 third_number_entry= customtkinter.CTkEntry (window, font=font4,  text_color="#2D3250",justify="center", fg_color="#FFFFFF", bg_color="#2D3250", border_width=2, width=180, height=60)
 third_number_entry.place(x=570, y=190)
 
+# Create label for the result to be shown. 
 
-
-
-    
-    
-   
-
-
-
-
-
-
-
-
+result_highest_number_label = Label(window, text="The highest number is {highest_number}.", fg ="#2D3250",bg="#FFFFFF", font=font2) 
+result_highest_number_label.place (x=110, y=210)
 
 
 window.mainloop()
